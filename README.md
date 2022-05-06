@@ -1,16 +1,12 @@
-# openFRUE
+# openFRUE - A Distribution Based on Gentoo!
 
-openFRUE is a desktop-use Linux Distribution based on, well, whatever distribution you currently use!
-Installing openFRUE is very easy, and fast!
+openFRUE is a general-purpose Linux Distribution based on Gentoo Linux. The goal of this project is to provide a stable, and functional system while providing the power of the Portage package manager. 
 
-In this repository, you can find all logos, licenses, and installation scripts.
+# Installation
 
-# Installing openFRUE
+Installation can be found in the how-to-install txt file, which is provided.
 
-To install openFRUE, just install a distribution you like, then download the `tar.xz` and untar it, then run the `*installer.sh` file as root in a terminal! Then, you reboot and you will be greeted with openFRUE!
-
-Prerequisites:
-- `wget`
+The installation is very similar to Gentoo's, but it contains a more dumbed-down and easier to read guide.
 
 # Support
 
