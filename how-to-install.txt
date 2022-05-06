@@ -136,6 +136,10 @@ Now you should go ahead and clean up:
 
 [root# emerge --depclean]
 
+Now install linux-firmware. You'll need it :)
+
+[root# emerge linux-firmware]
+
 					Chapter 10: Configuring Your System
 
 	Now is a good idea to make your fstab file. We'll save all the information about it. To edit it:
