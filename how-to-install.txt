@@ -1,4 +1,4 @@
-					openFRUE 22.05 Installation Guide
+					openFRUE Manual Installation Guide
 
 	This is a quick install guide on how to setup a minimal openFRUE system. The package manager of
 openFRUE has been chosen, by me, to be Portage as it allows easy configuration.
