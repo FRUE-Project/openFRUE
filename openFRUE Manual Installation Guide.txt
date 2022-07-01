@@ -1,13 +1,11 @@
-﻿openFRUE Manual Installation Guide
-
+﻿                           openFRUE Manual Installation Guide
 
 introduction 
 This is a quick installation guide on how to setup openFRUE, the minimal Gentoo based 
 Operating system. Portage was chosen by the openFRUE team for its simplicity in setting up
 And using for the development of openFRUE.
 
-
-Basic information
+                                     Basic information
 The manual installation of openFRUE can be done from any distributions live-cd, we 
 Recommend the use of ubuntu’s live-cd for this but any should work fine, thus making the 
 Installation of openFRUE very flexible.
@@ -17,50 +15,37 @@ Operating system and is done by making a GPT labeled partition, this can be done
 A gui (graphical user interface) based partitioning software such as GParted which allows you to
 create and remove partitions and format then as needed which is important to the setup.
 
-
-Selecting a Stage3
+                                     Selecting a Stage3
 Currently openFRUE only offers a stage3 tarball, once you find and install the appropriate tarball
 You need to create a folder in the /mnt directory and extract it. 
-
 
 mkdir -p /mnt/openFRUE 
   
 now that the directory is made extract the stage3 tarball to it
 
-
 cd /mnt/openFRUE 
 
-
 tar xvpf openfrue-stage3.tar.x --numeric-owner
-
-
-installation
+                                        installation
 now that the tarxz file is extracted to the proper directory its time to select a mirror for Portage.
 
-
 Mkdir -p /mnt/openfrue/etc/portage/repos.conf
-
 
 cp /mnt/openfrue/usr/share/portage/config/repos.conf /mnt/openfrue/etc/portage/repos.conf/
 gentoo.conf
 
-
 Make sure to check and confirm the config with something like “cat” or use a text editor to 
 Confirm its contents
-
 
 One thing you should do before chrooting into the new environment is to copy the DNS 
 Information, to do this you can run
 
-
 cp --deference /etc/resolv.conf /mnt/openfrue/etc/
 
-
-chrooting
+                                          chrooting
 chrooting is a useful way to change environments and to temporarily change the linux root
 Environment to ensure everything is working before doing this we need to make certain file 
 Systems.. Happy chroot chrooting.
-
 
 mount --types proc /proc /mnt/openfrue/proc
 mount --rbind /sys /mnt/openfrue/sys
@@ -70,202 +55,140 @@ mount --make-rslave /mnt,openfrue/dev
 mount --bind /run /mnt/openfrue/run
 mount --make-slave /mnt/openfrue/run
 
-
 now that the file system is made its now time to chroot chroot into the new environment
-
 
 chroot /mnt/openfrue /bin/bash
 source /etc/profile
 export PS1=”(chroot) ${PS1}”
 
-
 Mount a boot partition (assuming you are using /dev/sda1 as your boot partition)
 
-
 Mount /dev/sad1 /boot
-
 
 At this point you are now inside of the openFRUE environment, however installing is not 
 complete yet but a large chunk is.
 
-
-Configuring portage
+                                      Configuring portage
 Configuring portage is pretty simple and thats why i wrote this guide for you. To install an
 Ebuild repository just run 
 
-
 Emerge-webrsync 
-
 
 Or if something block it (firewall or other) run
 
-
 Emerge --sync 
 
-
 Please note that it is not best to sync more than once a day.
-
 
 Assuming you already are aware of how Portage works we shall move onto the other steps.
 Documentary for portage can be found on the Gentoo wiki: https://wiki.gentoo.org/wiki/Portage
 
-
 If you cannot emerge linux-firmware please add this to your /etc/portage/make.conf
-
 
 ACCEPT_LICENSE=”*”
 
-
-(do not that this will allow you to install nonfree software)
-
+(do note that this will allow you to install nonfree software)
 
 Time Zones and everything else
-
 
 Selecting the timezone for the system is an important part in the installation. To see available
 Time zones run 
 
+ls /usr/share/zoneinfo
 
-Ls /usr/share/zoneinfo
-
-
-Assuming you are using OpenRC, 
-
+Assuming you are using OpenRC run 
 
 Echo “America/Chicago” > /etc/timezone
 
-
 (replace “America/Chicago” with your timezones.
-
 
 emerge --config sys-libs/timezone-data
 
-
 Generate locales and edit them to your likings
-
 
 Nano -w /etc/locale.gen
 
-
 locale-gen 
 
-
 Reload the environment 
-
 
 Env-update && source /etc/profile && export PS1=”(chroot) ${PS1}”
 
 
-Installing and configuring the kernel
+                                                 Installing and configuring the kernel
 
 
 For a quick and easy/less painful kernel installation we suggest using gentoo-dist kernel however you can use whatever kernel you want to by install it with emerge.
 
-
 Installing gentoo-dist
-
 
 Emerge -a sys-kernel/gentoo-kernel-bin
 
-
 Now you should clean it up
-
 
 Emerge --depclean
 
-
 Now we install the linux-firmware, you will need it
-
 
 Emerge linux-firmware
 
-
 Configuring your system
-
 
 Now is a good idea to make your fstab file, an fs table showing partitions and needed to boot. To edit this run
 
-
 Nano -w /etc/fstab
-
 
 You should edit the fstab to correctly fit your partitions. If you need to find out something about your partitions then run 
 
-
 Blkid
-
 
 Make a hostname, this is very important because the default hostname is set to “localhost” and some software/firmware will not install in this case. To set the hostname run
 
-
 Nano -w /etc/conf.d/hostname
-
 
 Now you need to install network systems, a good detailed of them can be found in the previously mentioned gentoo wiki. To install the ones we recommend run
 
-
 Emerge -a net-misc/dhcpcd
-
 
 Rc-update add dhcpcd default && rc-service dhcpcd start
 
-
 Emerge -a networkmanager nm-tui nm-applet
-
 
 rc-update add networkmanager default
 
-
 Emerge -a net-wireless/iw net-wireless/wpa_supplicant
-
 
 You should set a root password at this time, to set one run
 
-
 passwd
 
-
-Installing tools
-
+                                                         Installing tools
 
 The openFRUE developers recommend that you use GRUB2 for its wide usage and support, to install it run 
 
-
 Emerge -a sys-boot/grub
-
 
 Installing GRUB2 to your disk
 
-
 Grub-install /dev/sda
-
 
 (if needed you can add the force “--force” and “--no-floppy” options.
 
-
 Configure GRUB2
-
 
 Grub-mkconfig -o /boot/grub/grub.cfg
 
+                                                   End of guide and finalization
 
-End of guide and finalization
-
-
-Congrats you made it! That means me to.. This was a pain to write but anyway you can finally reboot but make sure to remove the Live-cd or it will boot into that again.
-
+Congrats you made it! That means me too.. This was a pain to write but anyway you can finally reboot but make sure to remove the Live-cd or it will boot into that again.
 
 Here are some useful commands 
 
-
 exit 
-
 
 (cdimage commands)
 
-
 Cd && unmount -1 /mnt/openfrue/dev {/shm, /pts,} && unmount -R /mnt/openfrue
 reboot
-
 
 And there you have it! You now have openFRUE install onto your system. Enjoy it or else!
