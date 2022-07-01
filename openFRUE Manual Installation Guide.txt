@@ -72,11 +72,11 @@ complete yet but a large chunk is.
 Configuring portage is pretty simple and thats why i wrote this guide for you. To install an
 Ebuild repository just run 
 
-Emerge-webrsync 
+emerge-webrsync 
 
 Or if something block it (firewall or other) run
 
-Emerge --sync 
+emerge --sync 
 
 Please note that it is not best to sync more than once a day.
 
@@ -122,15 +122,15 @@ For a quick and easy/less painful kernel installation we suggest using gentoo-di
 
 Installing gentoo-dist
 
-Emerge -a sys-kernel/gentoo-kernel-bin
+emerge -a sys-kernel/gentoo-kernel-bin
 
 Now you should clean it up
 
-Emerge --depclean
+emerge --depclean
 
 Now we install the linux-firmware, you will need it
 
-Emerge linux-firmware
+emerge linux-firmware
 
 Configuring your system
 
@@ -148,15 +148,15 @@ Nano -w /etc/conf.d/hostname
 
 Now you need to install network systems, a good detailed of them can be found in the previously mentioned gentoo wiki. To install the ones we recommend run
 
-Emerge -a net-misc/dhcpcd
+emerge -a net-misc/dhcpcd
 
 Rc-update add dhcpcd default && rc-service dhcpcd start
 
-Emerge -a networkmanager nm-tui nm-applet
+emerge -a networkmanager nm-tui nm-applet
 
 rc-update add networkmanager default
 
-Emerge -a net-wireless/iw net-wireless/wpa_supplicant
+emerge -a net-wireless/iw net-wireless/wpa_supplicant
 
 You should set a root password at this time, to set one run
 
