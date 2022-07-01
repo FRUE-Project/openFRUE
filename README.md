@@ -4,7 +4,7 @@ openFRUE is a general-purpose Linux Distribution based on Gentoo Linux. The goal
 
 # Installation
 
-Installation can be found in the how-to-install txt file, which is provided.
+Installation can be found in the openFRUE installation guide txt file, which is provided.
 
 The installation is very similar to Gentoo's, but it contains a more dumbed-down and easier to read guide.
 
