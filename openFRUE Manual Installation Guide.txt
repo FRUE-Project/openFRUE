@@ -25,7 +25,7 @@ now that the directory is made extract the stage3 tarball to it
 
 cd /mnt/openFRUE 
 
-tar xvpf openfrue-stage3.tar.x --numeric-owner
+tar xvpf openfrue-stage3.tar.xz --numeric-owner
                                         installation
 now that the tarxz file is extracted to the proper directory its time to select a mirror for Portage.
 
