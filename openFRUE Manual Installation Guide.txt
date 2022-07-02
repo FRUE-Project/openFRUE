@@ -40,7 +40,7 @@ Confirm its contents
 One thing you should do before chrooting into the new environment is to copy the DNS 
 Information, to do this you can run
 
-cp --deference /etc/resolv.conf /mnt/openfrue/etc/
+cp --dereference /etc/resolv.conf /mnt/openfrue/etc/
 
                                           chrooting
 chrooting is a useful way to change environments and to temporarily change the linux root
