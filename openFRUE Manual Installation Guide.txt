@@ -14,6 +14,7 @@ Partitioning is a very important step to making openFRUE bootable and fully func
 Operating system and is done by making a GPT labeled partition, this can be done easily in
 A gui (graphical user interface) based partitioning software such as GParted which allows you to
 create and remove partitions and format then as needed which is important to the setup.
+run "sudo su" for the correct perms for the process
 
                                      Selecting a Stage3
 Currently openFRUE only offers a stage3 tarball, once you find and install the appropriate tarball
