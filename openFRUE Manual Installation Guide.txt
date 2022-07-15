@@ -90,7 +90,7 @@ ACCEPT_LICENSE=”*”
 
 (do note that this will allow you to install nonfree software)
 
-Time Zones and everything else
+                                  Time Zones and everything else
 
 Selecting the timezone for the system is an important part in the installation. To see available
 Time zones run 
