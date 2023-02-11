@@ -1,10 +1,10 @@
 # openFRUE - A Distribution Based on Gentoo!
 
 openFRUE is a Linux distribution based on Gentoo Linux, with the added FPKG and GNOME desktop environment.
-
+- !! - As of 2023, FPKG is not complete, and as such, openFRUE still uses Portage
 # Installation
 
-Installation is available with the installation guide in the repo. (installation.txt)
+Installation is available with the installation guide in the repo. (installation.md)
 
 # Support
 
